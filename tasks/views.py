@@ -1,6 +1,7 @@
+from http.client import HTTPResponse
 from xml.sax.saxutils import escape
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.utils.html import escape
 
@@ -16,5 +17,8 @@ def add_collection(request):
     if request.method == "POST":
         collection_name = escape(request.POST.get("collection-name"))
         if collection_name:  # Vérifie si le nom n'est pas vide
-            Collection.objects.create(name=collection_name)
+            collection, created = Collection.objects.get_or_create(name=collection_name)
+            if not created:
+                return HttpResponse("La colletion existe déjà.")
+
     return redirect('home')
