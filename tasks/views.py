@@ -19,6 +19,6 @@ def add_collection(request):
         if collection_name:  # Vérifie si le nom n'est pas vide
             collection, created = Collection.objects.get_or_create(name=collection_name)
             if not created:
-                return HttpResponse("La colletion existe déjà.")
+                return HttpResponse("La colletion existe déjà.", status=409)
 
-    return redirect('home')
+            return HttpResponse(f'<h2>{collection_name}</h2>')
