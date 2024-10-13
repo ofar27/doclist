@@ -30,6 +30,27 @@
 </form>
 
 
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="task-description">
+    <button hx-post="{% url 'add_task' %}"
+            hx-target="tasks"
+            hx-swap="beforeend"
+            type="submit">
+        Ajouter
+    </button>
+</form>
+
+<div id="tasks">
+    {% for task in tasks %}
+
+           <p>{{ taks.description }}</p>
+
+    {% endfor %}
+</div>
+
+
+
 <script>
     document.body.addEventListener("htmx:responseError",function(evt) {
         alert(evt.detail.xhr.responseText);
