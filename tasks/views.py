@@ -4,18 +4,19 @@ from xml.sax.saxutils import escape
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.html import escape
+from django.utils.text import slugify
 
 from tasks.models import Collection, Task
 
 
 def index(request):
-
-    collection_slug
-
-
     context = {}
 
-    collection = Collection.get_default_collection()
+    collection_slug = request.GET.get("collection")
+    if collection_slug:
+        collection = get_object_or_404(Collection, slug=collection_slug)
+    else:
+        collection = Collection.get_default_collection()
     context["collections"] = Collection.objects.order_by("-slug") # le "-" pour l'ordre alphabétique
     context["tasks"] = Collection.task_set.order_by("description")
 
@@ -27,7 +28,7 @@ def add_collection(request):
     if request.method == "POST":
         collection_name = escape(request.POST.get("collection-name"))
         if collection_name:  # Vérifie si le nom n'est pas vide
-            collection, created = Collection.objects.get_or_create(name=collection_name)
+            collection, created = Collection.objects.get_or_create(name=collection_name, slug=slugify(collection_name))
             if not created:
                 return HttpResponse("La colletion existe déjà.", status=409)
 
