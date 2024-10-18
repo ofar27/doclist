@@ -13,12 +13,13 @@ def index(request):
     context = {}
 
     collection_slug = request.GET.get("collection")
+    collection = Collection.get_default_collection()
+
     if collection_slug:
         collection = get_object_or_404(Collection, slug=collection_slug)
-    else:
-        collection = Collection.get_default_collection()
-    context["collections"] = Collection.objects.order_by("-slug") # le "-" pour l'ordre alphabétique
-    context["tasks"] = Collection.task_set.order_by("description")
+
+    context["collections"] = Collection.objects.order_by("slug") # le "-" pour l'ordre alphabétique
+    context["tasks"] = collection.task_set.order_by("description")
 
 
     return render(request, 'tasks/index.html', context=context)
