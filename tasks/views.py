@@ -47,3 +47,7 @@ def add_task(request):
 def get_tasks(request, collection_pk):
     collection = get_object_or_404(Collection, pk=collection_pk)
     return collection.task_set.order_by("description")
+
+
+def get_task()
+    return
