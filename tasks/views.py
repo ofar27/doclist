@@ -3,6 +3,7 @@ from xml.sax.saxutils import escape
 
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.utils.html import escape
 from django.utils.text import slugify
 
@@ -19,7 +20,7 @@ def index(request):
         collection = get_object_or_404(Collection, slug=collection_slug)
 
     context["collections"] = Collection.objects.order_by("slug") # le "-" pour l'ordre alphabétique
-    context["tasks"] = collection.task_set.order_by("description")
+    context["tasks"]  = collection.task_set.order_by("description")
 
 
     return render(request, 'tasks/index.html', context=context)
@@ -46,8 +47,6 @@ def add_task(request):
 
 def get_tasks(request, collection_pk):
     collection = get_object_or_404(Collection, pk=collection_pk)
-    return collection.task_set.order_by("description")
+    tasks = collection.task_set.order_by("description")
+    return render(request, 'tasks/tasks.html', context={"tasks":tasks})
 
-
-def get_task()
-    return
