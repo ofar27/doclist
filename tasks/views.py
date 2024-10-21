@@ -20,6 +20,7 @@ def index(request):
         collection = get_object_or_404(Collection, slug=collection_slug)
 
     context["collections"] = Collection.objects.order_by("slug") # le "-" pour l'ordre alphabétique
+    context["collection"] = collection
     context["tasks"]  = collection.task_set.order_by("description")
 
 
@@ -38,15 +39,18 @@ def add_collection(request):
 
 
 def add_task(request):
-    collection = Collection.get_default_collection()
-
+    collection_slug = request.POST.get("collection")
+    collection = get_object_or_404(Collection, slug=collection_slug)
     description = escape(request.POST.get("task-description"))
     Task.objects.create(description=description, collection=collection)
+
     return HttpResponse(description)
+
 
 
 def get_tasks(request, collection_pk):
     collection = get_object_or_404(Collection, pk=collection_pk)
     tasks = collection.task_set.order_by("description")
+
     return render(request, 'tasks/tasks.html', context={"tasks":tasks})
 
