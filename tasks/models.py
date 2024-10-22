@@ -28,3 +28,18 @@ class Task(models.Model):
 
 def __str__(self):
     return self.description
+
+
+class Task(models.Model):
+    description = models.CharField(max_length=255)
+    PRIORITY_CHOICES = [
+        ('low', 'Faible'),
+        ('medium', 'Moyenne'),
+        ('high', 'Élevée'),
+    ]
+    priority = models.CharField(max_length=6, choices=PRIORITY_CHOICES, default='medium')
+    collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.description} - {self.priority}'
+
