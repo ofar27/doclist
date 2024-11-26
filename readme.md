@@ -13,9 +13,8 @@
 
 ## Fonctionalités
 [x] Ajouter une collection  
-[] Supprimer une collection  
-[] Renommer une collection  
-[x] Empecher l'ajout d'une collection en doublon  
-[] Ajouter une tache (reliée à une collection)
-[] Supprimer une teche
-[] Afficher les taches d'une collection
+[ ]  Supprimer une collection  
+[x] Empecher l'ajout d'une collection en doublon    
+[x] Ajouter une tache (reliée à une collection)  
+[x] Supprimer une tache  
+[x] Afficher les taches d'une collection

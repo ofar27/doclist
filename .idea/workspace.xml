@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45952601-3804-4391-8a14-c0ce0cca5163" name="Changes" comment="" />
+    <list default="true" id="45952601-3804-4391-8a14-c0ce0cca5163" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tasks/templates/tasks/collection.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tasks/templates/tasks/task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docList/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/docList/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/templates/tasks/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/templates/tasks/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/templates/tasks/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/templates/tasks/tasks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tasks/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
