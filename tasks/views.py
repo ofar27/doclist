@@ -56,10 +56,15 @@ def delete_task(request, task_pk):
 
     return HttpResponse("")
 
+def delete_collection(request, collection_pk):
+    collection = get_object_or_404(Collection, pk=collection_pk)
+    collection.delete()
+
+    return redirect('home')
 
 
 def get_tasks(request, collection_pk):
     collection = get_object_or_404(Collection, pk=collection_pk)
     tasks = collection.task_set.order_by("description")
 
-    return render(request, 'tasks/tasks.html', context={"tasks":tasks})
+    return render(request, 'tasks/tasks.html', context={"tasks":tasks, "collection": collection})
