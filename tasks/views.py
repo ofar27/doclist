@@ -68,4 +68,3 @@ def get_tasks(request, collection_pk):
     tasks = collection.task_set.order_by("description")
 
     return render(request, 'tasks/tasks.html', context={"tasks":tasks, "collection": collection})
-def priorite
