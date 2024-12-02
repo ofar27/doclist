@@ -13,13 +13,13 @@
 </head>
 <body>
 
-<div class="container bg-danger">
+<div class="container border">
     <h1>DocList</h1>
 
     <!-- un bloc collection -->
     <div class="row">
-        <div class="col-4 bg-primary">
-            <nav id="collections">
+        <div class="col-4 border">
+            <nav id="collections" class="list-group">
                 {% for collection in collections %}
                     {% include 'tasks/collection.html' with collection=collection %}
                 {% endfor %}
@@ -41,7 +41,7 @@
         <!-- fin de bloc -->
 
         <!-- un bloc -->
-        <section class="col-8 bg-success">
+        <section class="col-8 border">
             <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="collection" value="{{ collection.slug }}">

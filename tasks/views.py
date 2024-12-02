@@ -68,12 +68,4 @@ def get_tasks(request, collection_pk):
     tasks = collection.task_set.order_by("description")
 
     return render(request, 'tasks/tasks.html', context={"tasks":tasks, "collection": collection})
-def filter_tasks_by_priority(request, priority):
-    """
-    Filtre les tâches d'une collection selon une priorité donnée.
-    """
-    collection_slug = request.GET.get("collection")
-    collection = get_object_or_404(Collection, slug=collection_slug)
-    tasks = collection.task_set.filter(priority=priority).order_by("description")
 
-    return render(request, 'tasks/tasks.html', context={"tasks": tasks})

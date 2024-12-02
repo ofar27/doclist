@@ -6,26 +6,3 @@
             hx-swap="outerHTML"
             type="submit">Supprimer</button>
 </form>
-from django.db import models
-from django.utils.text import slugify
-
-class Collection(models.Model):
-    name = models.CharField(max_length=60)
-    slug = models.SlugField()
-
-    def __str__(self):
-        return self.name
-
-class Task(models.Model):
-    PRIORITY_CHOICES = [
-        ('H', 'Haute'),
-        ('M', 'Moyenne'),
-        ('B', 'Basse'),
-    ]
-
-    description = models.CharField(max_length=300)
-    collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
-    priority = models.CharField(max_length=1, choices=PRIORITY_CHOICES, default='M')  # Default: Moyenne
-
-    def __str__(self):
-        return f"{self.description} ({self.get_priority_display()})"

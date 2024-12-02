@@ -1,4 +1,14 @@
-<button hx-get="{% url 'get-tasks' collection.pk %}"
-            hx-push-url="?collection={{ collection.slug }}"
-            hx-target="#tasks"
-            hx-swap="innerHTML">{{ collection.name }}</button>
+<!--<button class="btn nav-link"
+        hx-get="{% url 'get-tasks' collection.pk %}"
+        hx-push-url="?collection={{ collection.slug }}"
+        hx-target="#tasks"
+        hx-swap="innerHTML">{{ collection.name }}
+</button>
+-->
+<button class="list-group-item list-group-item-action"
+        hx-get="{% url 'get-tasks' collection.pk %}"
+        hx-push-url="?collection={{ collection.slug }}"
+        hx-target="#tasks"
+        hx-swap="innerHTML">
+    {{ collection.name }}
+</button>
