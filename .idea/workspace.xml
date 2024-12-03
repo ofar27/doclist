@@ -9,8 +9,6 @@
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks/templates/tasks/collection.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/templates/tasks/collection.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks/templates/tasks/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/templates/tasks/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/templates/tasks/task.html" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/templates/tasks/task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -13,24 +13,28 @@
 </head>
 <body>
 
-<div class="container border">
+<div class="container nt-5">
     <h1>DocList</h1>
 
     <!-- un bloc collection -->
     <div class="row">
-        <div class="col-4 border">
-            <nav id="collections" class="list-group">
+        <div class="col-4">
+            <nav id="collections" class="list-group" role="tablist">
                 {% for collection in collections %}
                     {% include 'tasks/collection.html' with collection=collection %}
                 {% endfor %}
             </nav>
 
 
-            <form method="POST">
+            <form method="POST" class="d-flex gap-2">
                 {% csrf_token %}
 
-                <input type="text" name="collection-name" placeholder="Collection...">
-                <button hx-post="{% url 'add-collection' %}"
+                <input type="text"
+                       name="collection-name"
+                       class="form-control"
+                       placeholder="Collection...">
+                <button class="btn btn-success"
+                        hx-post="{% url 'add-collection' %}"
                         hx-target="#collections"
                         hx-swap="beforeend"
                         type="submit">Ajouter
@@ -41,12 +45,16 @@
         <!-- fin de bloc -->
 
         <!-- un bloc -->
-        <section class="col-8 border">
-            <form method="POST">
+        <section class="col-8">
+            <form method="POST" class="d-flex gap-2">
                 {% csrf_token %}
                 <input type="hidden" name="collection" value="{{ collection.slug }}">
-                <input type="text" name="task-description" placeholder="Tache...">
-                <button hx-post="{% url 'add-task' %}"
+                <input type="text"
+                       name="task-description"
+                       class="form-control"
+                       placeholder="Tache...">
+                <button class="btn btn-success"
+                        hx-post="{% url 'add-task' %}"
                         hx-target="#tasks"
                         hx-swap="beforeend"
                         type="submit">
