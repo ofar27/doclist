@@ -5,11 +5,11 @@
         hx-swap="innerHTML">{{ collection.name }}
 </button>
 -->
-<button class="list-group-item list-group-item-action {% if request.GET.collection == collection.slug %}active{% endif %}"
+<button class="list-group-item list-group-item-action text-start {% if request.GET.collection == collection.slug %}active{% endif %}"
         data-bs-toggle="list"
         hx-get="{% url 'get-tasks' collection.pk %}"
         hx-push-url="?collection={{ collection.slug }}"
-        hx-target="#tasks"
+        hx-target="#tasks-container"
         hx-swap="innerHTML">
     {{ collection.name }}
 </button>

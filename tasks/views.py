@@ -12,7 +12,7 @@ from django.template.loader import render_to_string
 
 from tasks.models import Collection, Task
 
-
+"""""
 def index(request):
     context = {}
 
@@ -26,6 +26,20 @@ def index(request):
     context["collection"] = collection
     context["tasks"]  = collection.task_set.order_by("description")
 
+
+    return render(request, 'tasks/index.html', context=context)
+"""
+def index(request):
+    context = {}
+    collection_slug = request.GET.get("collection")
+    collection = Collection.get_default_collection()
+
+    if collection_slug:
+        collection = get_object_or_404(Collection, slug=collection_slug)
+
+    context["collections"] = Collection.objects.order_by("slug")
+    context["collection"] = collection
+    context["tasks"] = collection.task_set.order_by("description")
 
     return render(request, 'tasks/index.html', context=context)
 
@@ -49,18 +63,25 @@ def add_task(request):
 
     return render(request, 'tasks/task.html', context={"task": task})
 
-
 def delete_task(request, task_pk):
     task = get_object_or_404(Task, pk=task_pk)
     task.delete()
 
     return HttpResponse("")
-
+"""""
 def delete_collection(request, collection_pk):
     collection = get_object_or_404(Collection, pk=collection_pk)
     collection.delete()
 
     return redirect('home')
+    """
+def delete_collection(request, collection_pk):
+    collection = get_object_or_404(Collection, pk=collection_pk)
+    if collection.is_default:
+        return HttpResponse("Vous ne pouvez pas supprimer la collection par défaut.", status=403)
+    collection.delete()
+    return redirect('home')
+
 
 
 def get_tasks(request, collection_pk):
